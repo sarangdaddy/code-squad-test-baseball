@@ -23,17 +23,23 @@
 
     <form class="users">
       <div class="users__balls">
-        <span class="users__ball__clone">X</span>
-        <span class="users__ball__clone">X</span>
-        <span class="users__ball__clone">X</span>
+        <span class="users__ball__clone">XXX</span>
       </div>
       <div class="users__start">
         <input
-          class="users__start__button"
+          class="users__input__balls"
+          type="text"
+          maxlength="3"
+          oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
           placeholder="세자리 번호를 입력하세요."
         />
+        <button class="users__start__btn">Check!</button>
       </div>
     </form>
+
+    <div class="game__result">
+      <div class="gema__result_clone">1 스트라이크 1볼 입니다.</div>
+    </div>
 
     <script src="js/game.js"></script>
   </body>
