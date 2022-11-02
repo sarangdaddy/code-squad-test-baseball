@@ -46,3 +46,13 @@ body {
 .users__input__balls {
   font-size: 20px;
 }
+
+.users__start__btn {
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.game__result {
+  margin-top: 15px;
+  font-size: 30px;
+}

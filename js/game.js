@@ -3,6 +3,7 @@ const showComputerBalls = document.querySelector(".computer__ball__clone");
 const inputUsersBalls = document.querySelector(".users__input__balls");
 const checkBtn = document.querySelector(".users__start__btn");
 const showUsersBalls = document.querySelector(".users__ball__clone");
+const showResult = document.querySelector(".game__result_clone");
 
 let game = {};
 
@@ -42,33 +43,22 @@ game.getUsersBalls = function (event) {
 
 //Computer와 users ball을 비교하는 함수
 game.checkBalls = function (usersBalls) {
-  console.log(usersBalls, this.computerBalls);
-  console.log(indexOf(usersBalls[0]), indexOf(this.computerBalls[0]));
-
-  let answer = [];
+  console.log(this.computerBalls, usersBalls);
   let strike = 0;
   let ball = 0;
 
-  for (let i = 0; i < 3; i++) {
-    for (let j = 0; j < 3; j++) {
-      if (
-        this.computerBalls[i] === usersBalls[j] &&
-        indexof(this.computerBalls[i]) === indexOf(usersBalls[j])
-      ) {
-        strike++;
-        answer.push(strike);
-        return answer;
-      } else if (
-        this.computerBalls[i] === usersBalls[j] &&
-        indexof(this.computerBalls[i]) !== indexOf(usersBalls[j])
-      ) {
-        ball++;
-        answer.push(ball);
-        return answer;
-      } else return (answer = "nothing");
+  this.computerBalls.forEach((v, i) => {
+    for (let j = 0; j < usersBalls.length; j++) {
+      if (v === usersBalls[j]) {
+        if (i === j) {
+          strike++;
+        } else if (i !== j) {
+          ball++;
+        }
+      }
     }
-  }
-  console.log(answer);
+  });
+  showResult.innerText = `${strike} 스트라이크 ${ball} 볼 입니다.`;
 };
 
 startBtn.addEventListener("click", game.getBalls);
